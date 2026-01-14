@@ -1,0 +1,7 @@
+.panel {
+    min-height: 650px;
+    width: 550px;
+    background-color: white;
+    border: 3px solid rgb(146, 179, 252);
+    border-radius: 25px;
+}

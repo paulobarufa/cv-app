@@ -1,10 +1,6 @@
-import { useState } from "react"
 import "./styles/Nav.css"
 
-
-export default function Nav() {
-
-    const [activeIndex, setActiveIndex] = useState(0);
+function Nav({activeIndex, setActiveIndex}) {
 
     return (
         <div className="nav-bar">
@@ -40,3 +36,5 @@ function NavItem({title, isActive, onClick}) {
         <button className={isActive ? "selected" : ""} onClick={onClick}>{title}</button>
     )
 }
+
+export default Nav

@@ -5,11 +5,12 @@ button {
 }
 
 .nav-bar {
-    padding: 12px;
+    padding: 10px 20px;
     border-radius: 15px;
     background-color: white;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 10px;
 }
 
