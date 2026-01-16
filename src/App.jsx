@@ -7,18 +7,19 @@ import View from "./View.jsx";
 function App() {
 
   const [activeNav, setActiveNav] = useState(0);
+  const [details, setDetails] = useState({});
 
   return (
     <div className="app-container">
       <div className="nav-wrapper">
-        <Nav activeIndex={activeNav} setActiveIndex={setActiveNav}/>
+        <Nav activeIndex={activeNav} setActiveIndex={setActiveNav} />
       </div>
       <div className="main-wrapper">
         <div className="input-wrapper">
-          <Panel />
+          <Panel details={details} setDetails={setDetails} />
         </div>
         <div className="view-wrapper">
-          <View />
+          <View details={details} />
         </div>
       </div>
     </div>

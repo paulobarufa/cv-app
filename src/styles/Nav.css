@@ -15,5 +15,5 @@ button {
 }
 
 .selected {
-    background-color: rgb(146, 179, 252);
+    background-color: var(--main-offset-color)
 }

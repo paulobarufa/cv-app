@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   max-width: 1400px;
   margin: auto;
+
+  --main-color: rgb(94, 145, 255);
+  --main-offset-color: rgb(191, 202, 226);
 }
 
 a {
