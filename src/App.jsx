@@ -16,7 +16,7 @@ function App() {
       </div>
       <div className="main-wrapper">
         <div className="input-wrapper">
-          <Panel details={details} setDetails={setDetails} />
+          <Panel details={details} setDetails={setDetails} activeIndex={activeNav} />
         </div>
         <div className="view-wrapper">
           <View details={details} />

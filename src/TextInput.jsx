@@ -1,9 +1,6 @@
 import "./styles/TextInput.css"
-import { useState } from "react"
 
-function TextInput({id, title, details, setDetails}) {
-
-    const [value, setValue] = useState("");
+function TextInput({id, title, details, setDetails, value, setValue}) {
 
     const handleOnChange = (e) => {
 
@@ -17,7 +14,7 @@ function TextInput({id, title, details, setDetails}) {
     return (
         <div className="main-input">
             <label htmlFor={id}>{title}</label>
-            <input type="text" id={id} value={value} onChange={handleOnChange} />
+            <input type="text" id={id} key={id} value={value} onChange={handleOnChange} />
         </div>
     )
 }
