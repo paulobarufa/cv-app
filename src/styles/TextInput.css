@@ -16,6 +16,7 @@
     border-radius: 8px;
     border: 2px solid var(--main-offset-color);
     padding: 3px 10px;
+    box-sizing: border-box;
 }
 
 .main-input > input:focus {

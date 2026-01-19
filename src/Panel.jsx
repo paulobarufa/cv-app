@@ -1,6 +1,8 @@
 import "./styles/Panel.css"
 import TextInput from "./TextInput.jsx"
+import Button from "./Button.jsx";
 import { useState } from "react";
+
 
 function Panel({details, setDetails, activeIndex}) {
 
@@ -26,6 +28,7 @@ function Panel({details, setDetails, activeIndex}) {
     return (
         <div className="panel">
             {activeIndex === 0 && <DetailsPanel props={personalProps} details={details} setDetails={setDetails}/>}
+            {activeIndex === 1 && <WorkExperiencePanel details={details} setDetails={setDetails}/>}
         </div>
     )
 }
@@ -75,6 +78,16 @@ function DetailsPanel({props, details, setDetails}) {
                 id="githubinput"
                 title="Github link:"
             />
+        </>
+    )
+}
+
+function WorkExperiencePanel({details, setDetails}) {
+    
+    return (
+        <>
+            <h2>Work Experience</h2>
+            <Button name="Add experience"></Button>
         </>
     )
 }
