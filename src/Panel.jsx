@@ -9,31 +9,31 @@ function Panel({details, setDetails}) {
             <TextInput 
                 details={details}
                 setDetails={setDetails}
-                id="name-input"
+                id="nameinput"
                 title="Full Name:"
             />
             <TextInput 
                 details={details}
                 setDetails={setDetails}
-                id="email-input"
+                id="emailinput"
                 title="Email:"
             />
             <TextInput 
                 details={details}
                 setDetails={setDetails}
-                id="contact-input"
+                id="contactinput"
                 title="Contact Number:"
             />
             <TextInput 
                 details={details}
                 setDetails={setDetails}
-                id="location-input"
+                id="locationinput"
                 title="Location:"
             />
             <TextInput 
                 details={details}
                 setDetails={setDetails}
-                id="github-input"
+                id="githubinput"
                 title="Github link:"
             />
         </div>
