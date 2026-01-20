@@ -4,7 +4,7 @@ function TextInput({id, title, details, setDetails, value, setValue}) {
 
     const handleOnChange = (e) => {
 
-        setValue(e.target.value)
+        if (setValue) setValue(e.target.value)
         setDetails({
             ...details,
             [id]: e.target.value

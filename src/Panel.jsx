@@ -1,5 +1,5 @@
 import "./styles/Panel.css"
-import TextInput from "./Inputs.jsx"
+import { TextInput } from "./Inputs.jsx"
 import Button from "./Button.jsx";
 import { useState } from "react";
 

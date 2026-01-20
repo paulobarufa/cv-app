@@ -42,3 +42,20 @@ form > .main-input + .date-input-container > div {
 form > .main-input {
     width: 100%;
 }
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-row > button {
+    width: 45%;
+}
+
+.cancel-btn {
+    background-color: var(--main-offset-color);
+}
+
+.save-btn {
+    background-color: var(--main-color);
+}

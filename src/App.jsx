@@ -8,7 +8,12 @@ import Modal from "./Modal.jsx";
 function App() {
 
   const [activeNav, setActiveNav] = useState(0);
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState({
+    work: [],
+    education: [],
+    skills:[]
+  });
+  
   const [modalOpen, setModalOpen] = useState(false)
   const openModal = () => {
     setModalOpen(true)

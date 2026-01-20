@@ -1,15 +1,42 @@
 import "./styles/Modal.css"
 import { TextInput, DateInput } from "./Inputs"
 import { useState } from "react"
+import Button from "./Button"
 
 function Modal({setModalOpen, modalState, details, setDetails}) {
 
     const [modalDetails, setModalDetails] = useState({})
+    
+    const closeModal = () => {
+        setModalOpen(false)
+    }
+
+    const saveDetails = (e) => {
+        e.preventDefault()
+        switch (modalState) {
+            case 1:
+                setDetails({
+                    ...details,
+                    work: [...details.work, modalDetails]
+                })
+                setModalOpen(false)
+                break;
+        
+            default:
+                break;
+        }
+    }
+
 
     return (
         <div className="modal-background">
             <div className="modal-container">
-                {modalState === 1 && <WorkForm modalDetails={modalDetails} setModalDetails={setModalDetails} />}
+                {modalState === 1 && <WorkForm 
+                                        modalDetails={modalDetails} 
+                                        setModalDetails={setModalDetails} 
+                                        closeModal={closeModal}
+                                        saveDetails={saveDetails}
+                                    />}
 
             </div>
         </div>
@@ -17,7 +44,7 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
     )
 }
 
-function WorkForm({modalDetails, setModalDetails}) {
+function WorkForm({modalDetails, setModalDetails, closeModal, saveDetails}) {
 
     return (
         <form noValidate>
@@ -28,6 +55,10 @@ function WorkForm({modalDetails, setModalDetails}) {
                 <DateInput id="enddate" title="End Date:" details={modalDetails} setDetails={setModalDetails} />
             </div>
             <TextInput id="joblocation" title="Job Location:" details={modalDetails} setDetails={setModalDetails}/>
+            <div className="button-row">
+                <Button handleClick={closeModal} className="cancel-btn" name="Cancel"/>
+                <Button handleClick={saveDetails} className="save-btn" name="Save"/>
+            </div>
         </form>
     )
 }
