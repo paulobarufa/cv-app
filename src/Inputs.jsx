@@ -1,4 +1,4 @@
-import "./styles/TextInput.css"
+import "./styles/Inputs.css"
 
 function TextInput({id, title, details, setDetails, value, setValue}) {
 
@@ -19,4 +19,22 @@ function TextInput({id, title, details, setDetails, value, setValue}) {
     )
 }
 
-export default TextInput
+function DateInput({id, title, details, setDetails}) {
+
+    const handleOnChange = (e) => {
+
+        setDetails({
+            ...details,
+            [id]: e.target.value
+        })
+    };
+
+    return (
+        <div>
+            <label htmlFor={id}>{title}</label>
+            <input type="date" id={id} key={id} onChange={handleOnChange} />
+        </div>
+    )
+}
+
+export { TextInput, DateInput }

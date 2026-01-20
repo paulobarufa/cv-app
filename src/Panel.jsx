@@ -1,10 +1,10 @@
 import "./styles/Panel.css"
-import TextInput from "./TextInput.jsx"
+import TextInput from "./Inputs.jsx"
 import Button from "./Button.jsx";
 import { useState } from "react";
 
 
-function Panel({details, setDetails, activeIndex}) {
+function Panel({details, setDetails, activeIndex, openModal}) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ function Panel({details, setDetails, activeIndex}) {
     return (
         <div className="panel">
             {activeIndex === 0 && <DetailsPanel props={personalProps} details={details} setDetails={setDetails}/>}
-            {activeIndex === 1 && <WorkExperiencePanel details={details} setDetails={setDetails}/>}
+            {activeIndex === 1 && <WorkExperiencePanel details={details} openModal={openModal} />}
         </div>
     )
 }
@@ -82,12 +82,12 @@ function DetailsPanel({props, details, setDetails}) {
     )
 }
 
-function WorkExperiencePanel({details, setDetails}) {
+function WorkExperiencePanel({details, openModal}) {
     
     return (
         <>
             <h2>Work Experience</h2>
-            <Button name="Add experience"></Button>
+            <Button name="Add experience" handleClick={openModal}></Button>
         </>
     )
 }
