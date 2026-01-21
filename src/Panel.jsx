@@ -2,6 +2,7 @@ import "./styles/Panel.css"
 import { TextInput } from "./Inputs.jsx"
 import Button from "./Button.jsx";
 import { useState } from "react";
+import { format } from "date-fns";
 
 
 function Panel({details, setDetails, activeIndex, openModal}) {
@@ -83,10 +84,20 @@ function DetailsPanel({props, details, setDetails}) {
 }
 
 function WorkExperiencePanel({details, openModal}) {
+
+    const workList = details.work.map(experience => {
+        return (
+            <div className="panel-item">
+                <p className="panel-title">{experience.company}</p>
+                <p className="panel-dates">{`${format(experience.startdate, "MMM yyyy")} - ${format(experience.enddate, "MMM yyyy")}`}</p>
+            </div>
+        )
+    })
     
     return (
         <>
             <h2>Work Experience</h2>
+            {workList}
             <Button name="Add experience" handleClick={openModal}></Button>
         </>
     )

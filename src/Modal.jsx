@@ -9,6 +9,7 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
     
     const closeModal = () => {
         setModalOpen(false)
+        console.log(details)
     }
 
     const saveDetails = (e) => {
@@ -17,7 +18,7 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
             case 1:
                 setDetails({
                     ...details,
-                    work: [...details.work, modalDetails]
+                    work: [...details.work, modalDetails].sort((a, b) => b.startdate - a.startdate)
                 })
                 setModalOpen(false)
                 break;

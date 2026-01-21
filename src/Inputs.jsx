@@ -25,7 +25,7 @@ function DateInput({id, title, details, setDetails}) {
 
         setDetails({
             ...details,
-            [id]: e.target.value
+            [id]: new Date(e.target.value)
         })
     };
 
