@@ -5,7 +5,9 @@ import Button from "./Button"
 
 function Modal({setModalOpen, modalState, details, setDetails}) {
 
-    const [modalDetails, setModalDetails] = useState({})
+    const [modalDetails, setModalDetails] = useState({
+        uuid: crypto.randomUUID()
+    })
     
     const closeModal = () => {
         setModalOpen(false)

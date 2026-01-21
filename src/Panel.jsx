@@ -28,8 +28,8 @@ function Panel({details, setDetails, activeIndex, openModal}) {
 
     return (
         <div className="panel">
-            {activeIndex === 0 && <DetailsPanel props={personalProps} details={details} setDetails={setDetails}/>}
-            {activeIndex === 1 && <WorkExperiencePanel details={details} openModal={openModal} />}
+            {activeIndex === 0 && <DetailsPanel props={personalProps} details={details} setDetails={setDetails} />}
+            {activeIndex === 1 && <WorkExperiencePanel details={details} openModal={openModal} setDetails={setDetails} />}
         </div>
     )
 }
@@ -83,13 +83,27 @@ function DetailsPanel({props, details, setDetails}) {
     )
 }
 
-function WorkExperiencePanel({details, openModal}) {
+function WorkExperiencePanel({details, openModal, setDetails}) {
+
+    const deleteItem = (e) => {
+        const uuid = e.target.getAttribute("uuid");
+        setDetails({
+            ...details,
+            work: [...details.work].filter(item => item.uuid !== uuid)
+        })
+    }
 
     const workList = details.work.map(experience => {
         return (
-            <div className="panel-item">
-                <p className="panel-title">{experience.company}</p>
-                <p className="panel-dates">{`${format(experience.startdate, "MMM yyyy")} - ${format(experience.enddate, "MMM yyyy")}`}</p>
+            <div className="panel-item" key={experience.uuid} >
+                <div className="panel-left">
+                    <p className="panel-title">{experience.company}</p>
+                    <p className="panel-dates">{`${format(experience.startdate, "MMM yyyy")} - ${format(experience.enddate, "MMM yyyy")}`}</p>
+                </div>
+                <div className="panel-right">
+                    <Button name="X" className="del-btn" uuid={experience.uuid} handleClick={deleteItem} />
+                </div>
+                
             </div>
         )
     })
@@ -98,7 +112,7 @@ function WorkExperiencePanel({details, openModal}) {
         <>
             <h2>Work Experience</h2>
             {workList}
-            <Button name="Add experience" handleClick={openModal}></Button>
+            <Button name="Add experience" className="add-btn" handleClick={openModal} />
         </>
     )
 }
