@@ -11,7 +11,6 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
     
     const closeModal = () => {
         setModalOpen(false)
-        console.log(details)
     }
 
     const saveDetails = (e) => {
@@ -21,6 +20,22 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
                 setDetails({
                     ...details,
                     work: [...details.work, modalDetails].sort((a, b) => b.startdate - a.startdate)
+                })
+                setModalOpen(false)
+                break;
+
+            case 2:
+                setDetails({
+                    ...details,
+                    education: [...details.education, modalDetails].sort((a, b) => b.startdate - a.startdate)
+                })
+                setModalOpen(false)
+                break;
+
+            case 3:
+                setDetails({
+                    ...details,
+                    skills: [...details.skills, modalDetails]
                 })
                 setModalOpen(false)
                 break;
@@ -35,6 +50,18 @@ function Modal({setModalOpen, modalState, details, setDetails}) {
         <div className="modal-background">
             <div className="modal-container">
                 {modalState === 1 && <WorkForm 
+                                        modalDetails={modalDetails} 
+                                        setModalDetails={setModalDetails} 
+                                        closeModal={closeModal}
+                                        saveDetails={saveDetails}
+                                    />}
+                {modalState === 2 && <EducationForm 
+                                        modalDetails={modalDetails} 
+                                        setModalDetails={setModalDetails} 
+                                        closeModal={closeModal}
+                                        saveDetails={saveDetails}
+                                    />}
+                {modalState === 3 && <SkillsForm 
                                         modalDetails={modalDetails} 
                                         setModalDetails={setModalDetails} 
                                         closeModal={closeModal}
@@ -66,12 +93,33 @@ function WorkForm({modalDetails, setModalDetails, closeModal, saveDetails}) {
     )
 }
 
-function EducationForm({}) {
-
+function EducationForm({modalDetails, setModalDetails, closeModal, saveDetails}) {
+    return (
+        <form noValidate>
+            <TextInput id="university" title="University:" details={modalDetails} setDetails={setModalDetails}/>
+            <TextInput id="course" title="Course:" details={modalDetails} setDetails={setModalDetails}/>
+            <div className={`main-input date-input-container`}>
+                <DateInput id="startdate" title="Start Date:" details={modalDetails} setDetails={setModalDetails} />
+                <DateInput id="enddate" title="End Date:" details={modalDetails} setDetails={setModalDetails} />
+            </div>
+            <div className="button-row">
+                <Button handleClick={closeModal} className="cancel-btn" name="Cancel"/>
+                <Button handleClick={saveDetails} className="save-btn" name="Save"/>
+            </div>
+        </form>
+    )
 }
 
-function SkillsForm({}) {
-
+function SkillsForm({modalDetails, setModalDetails, closeModal, saveDetails}) {
+    return (
+        <form noValidate>
+            <TextInput id="skill" title="Skill:" details={modalDetails} setDetails={setModalDetails}/>
+            <div className="button-row">
+                <Button handleClick={closeModal} className="cancel-btn" name="Cancel"/>
+                <Button handleClick={saveDetails} className="save-btn" name="Save"/>
+            </div>
+        </form>
+    )
 }
 
 export default Modal

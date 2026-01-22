@@ -70,3 +70,14 @@ h4 {
     margin-bottom: 5px;
 }
 
+.skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.skills-wrapper > p {
+    margin: 0;
+    font-size: 0.9em;
+}

@@ -30,6 +30,8 @@ function Panel({details, setDetails, activeIndex, openModal}) {
         <div className="panel">
             {activeIndex === 0 && <DetailsPanel props={personalProps} details={details} setDetails={setDetails} />}
             {activeIndex === 1 && <WorkExperiencePanel details={details} openModal={openModal} setDetails={setDetails} />}
+            {activeIndex === 2 && <EducationPanel details={details} openModal={openModal} setDetails={setDetails} />}
+            {activeIndex === 3 && <SkillsPanel details={details} openModal={openModal} setDetails={setDetails} />}
         </div>
     )
 }
@@ -113,6 +115,73 @@ function WorkExperiencePanel({details, openModal, setDetails}) {
             <h2>Work Experience</h2>
             {workList}
             <Button name="Add experience" className="add-btn" handleClick={openModal} />
+        </>
+    )
+}
+
+function EducationPanel({details, openModal, setDetails}) {
+    
+    const deleteItem = (e) => {
+        const uuid = e.target.getAttribute("uuid");
+        setDetails({
+            ...details,
+            education: [...details.education].filter(item => item.uuid !== uuid)
+        })
+    }
+
+    const educationList = details.education.map(experience => {
+        return (
+            <div className="panel-item" key={experience.uuid} >
+                <div className="panel-left">
+                    <p className="panel-title">{experience.university}</p>
+                    <p className="panel-dates">{`${format(experience.startdate, "MMM yyyy")} - ${format(experience.enddate, "MMM yyyy")}`}</p>
+                </div>
+                <div className="panel-right">
+                    <Button name="X" className="del-btn" uuid={experience.uuid} handleClick={deleteItem} />
+                </div>
+                
+            </div>
+        )
+    })
+    
+    return (
+        <>
+            <h2>Education</h2>
+            {educationList}
+            <Button name="Add education" className="add-btn" handleClick={openModal} />
+        </>
+    )
+}
+
+function SkillsPanel({details, openModal, setDetails}) {
+    
+    const deleteItem = (e) => {
+        const uuid = e.target.getAttribute("uuid");
+        setDetails({
+            ...details,
+            skills: [...details.skills].filter(item => item.uuid !== uuid)
+        })
+    }
+
+    const skillsList = details.skills.map(experience => {
+        return (
+            <div className="panel-item" key={experience.uuid} >
+                <div className="panel-left">
+                    <p className="panel-title">{experience.skill}</p>
+                </div>
+                <div className="panel-right">
+                    <Button name="X" className="del-btn" uuid={experience.uuid} handleClick={deleteItem} />
+                </div>
+                
+            </div>
+        )
+    })
+    
+    return (
+        <>
+            <h2>Skills</h2>
+            {skillsList}
+            <Button name="Add skill" className="add-btn" handleClick={openModal} />
         </>
     )
 }
