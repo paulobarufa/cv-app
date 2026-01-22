@@ -33,7 +33,7 @@ h3 {
 
 h4 {
     font-size: 1.3em;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 10px;
 }
 
@@ -43,7 +43,7 @@ h4 {
 }
 
 .view-item {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .view-text {
@@ -74,7 +74,6 @@ h4 {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 20px;
 }
 
 .skills-wrapper > p {
